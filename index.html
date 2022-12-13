@@ -20,49 +20,53 @@
   <main class="container-fluid mt-3">
 
     <div class="row p-2">
-      <div class="col-4">
+      <div class="col-4 col-md-3">
         <form>
-          <fieldset>
-            <div class="mb-3">
-              <label for="textInput" class="form-label">
-                <h4>Search for a city:</h4>
-              </label>
-              <input type="text" id="textInput" class="form-control" placeholder="Charlotte">
-            </div>
-            <button type="submit" class="btn btn-purp text-light col-12">SEARCH</button>
-          </fieldset>
+          <div class="mb-3">
+            <label for="textInput" class="form-label">
+              <h4>Search for a city:</h4>
+            </label>
+            <input type="text" id="textInput" class="form-control" placeholder="Charlotte">
+          </div>
+          <button type="submit" class="btn btn-purp text-light col-12">SEARCH</button>
         </form>
+        <div>
+          <ul id="searchList" class="list-group"></ul>
+        </div>
       </div>
-
-      <div class="card mb-3 col-8">
+      <div class="card col-8 col-md-9">
         <div class="card-body">
-          <h5 class="card-title"></h5>
+          <h2 class="card-title"></h2>
           <p class="card-text"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <h3>5-Day Forecast:</h3>
+          <div class="" id="fiveDay">
+            <div class="card-deck row">
+              <div class="col" id="one">
+                <p>Blah</p>
+              </div>
+              <div class="col" id="two">
+                <p>Blah</p>
+              </div>
+              <div class="col" id="three">
+                <p>Blah</p>
+              </div>
+              <div class="col" id="four">
+                <p>Blah</p>
+              </div>
+              <div class="col" id="five">
+                <p>Blah</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <section class="">
-      <div class="" id="fiveDay">
-        <div class="card-deck row">
-          <div class="col" id="one">
-            <p>Blah</p>
-          </div>
-          <div class="col" id="two">
-            <p>Blah</p>
-          </div>
-          <div class="col" id="three">
-            <p>Blah</p>
-          </div>
-          <div class="col" id="four">
-            <p>Blah</p>
-          </div>
-          <div class="col" id="five">
-            <p>Blah</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
   </main>
 
