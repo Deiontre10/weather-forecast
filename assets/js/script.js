@@ -3,12 +3,18 @@ var cityInput = $("#textInput");
 
 $(function () {
 
-  var weatherResults = function (lat, lon) {
-    // var lat = weather.coord.lat;
-    // var lon = weather.coord.lon;
+  var currentWeather = function (main) {
+    // for (var result of main) {
+    //   console.log(result.main.temp);
+    // };
+  };
+
+  var weatherResults = function (weather) {
+    // var lat = .coord.lat;
+    // var lon = .coord.lon;
     var city = cityInput.val().trim();
     var apiKey = "06d1869c73d270a477b863d31ffacc7e"
-    var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
+    // var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
     var tUrl = "https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=" + apiKey + "&units=imperial";
     
     fetch(tUrl)
@@ -17,6 +23,7 @@ $(function () {
     })
     .then(function (data) {
       console.log(data);
+      currentWeather(data.main);
     })
     .catch(function (error) {
       console.log(error);
@@ -32,7 +39,8 @@ $(function () {
     } else {
       weatherResults(input);
     }
-
-    console.log("search");
+    var currentDate = dayjs().format("MM/DD/YYYY");
+    $("#todaysDate").text(currentDate);
+    
   });
 });

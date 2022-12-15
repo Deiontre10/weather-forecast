@@ -36,8 +36,10 @@
       </div>
       <div class="card col-8 col-md-9">
         <div class="card-body" id="todayForecast">
-          <h2 class="card-title"></h2>
-          <p class="card-text"></p>
+          <h2 class="card-title" id="currentCity"><span id="todaysDate"></span><span id="weatherIcon"></span></h2>
+          <p class="card-text" id="currentTemp">Temp:</p>
+          <p class="card-text" id="currentWind">Wind:</p>
+          <p class="card-text"  id="currentHumidity">Humidity:</p>
         </div>
         <div class="row">
           <div class="col-8 col-md-9">
@@ -70,7 +72,11 @@
 
 
   </main>
-
+  <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
