@@ -1,5 +1,7 @@
 var searchBtn = $("#searchButton");
 var cityInput = $("#textInput");
+var currentDate = dayjs().format("MM/DD/YYYY");
+
 
 $(function () {
 
@@ -27,8 +29,9 @@ $(function () {
         var lat = data.coord.lat;
         var lon = data.coord.lon;
         var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
+        var weatherIcon = "http://openweathermap.org/img/w/"  + data.weather[0].icon + ".png";
         
-        $("#currentCity").text(data.name);
+        $("#currentCity").text(data.name).append(" " + currentDate + " " + "<img src='" + weatherIcon  + "'>");
         $("#currentTemp").text("Temp:" + " " + data.main.temp + " °F");
         $("#currentWind").text("Wind: " + " " + data.wind.speed + " MPH");
         $("#currentHumidity").text("Humidity: " + " " + data.main.humidity + " %");
@@ -65,8 +68,7 @@ $(function () {
     } else {
       weatherResults(input);
     }
-    var currentDate = dayjs().format("MM/DD/YYYY");
-    $("#todaysDate").text(currentDate);
+    // $("#todaysDate").text(currentDate);
 
   });
 });
