@@ -10,15 +10,14 @@ $(function () {
 
     var city = cityInput.val().trim();
     var apiKey = "06d1869c73d270a477b863d31ffacc7e"
-    var tUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
+    var currentUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
 
 
-    fetch(tUrl)
+    fetch(currentUrl)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         var lat = data.coord.lat;
         var lon = data.coord.lon;
         var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
@@ -35,7 +34,6 @@ $(function () {
             return response.json();
           })
           .then(function (weather) {
-            console.log(weather.list);
             for (var i = 0; i < weather.list.length; i += 8) {
               var fiveDayIconEl = "http://openweathermap.org/img/w/" + weather.list[i].weather[0].icon + ".png"
               var listPosition = (i + 8) / 8;
@@ -46,6 +44,7 @@ $(function () {
               $("#fiveDayHumidity" + listPosition).text("Humidity: " + " " + weather.list[i].main.humidity + " %");
               $(".fiveDay").attr("style", "background-color:blueviolet; color:white");
             }
+            searched();
           })
           .catch(function (error) {
             console.log(error);
@@ -56,6 +55,22 @@ $(function () {
       });
   };
 
+  var searched = function () {
+    $("#searchList")
+    var previousCities = JSON.parse(localStorage.getItem("searchedCities")) || [];
+    for (var i = 0; i < previousCities.length; i++) { 
+      $("#searchList").append ("<button class='list-group-item'>" + previousCities[i] 
+      + "</button>")
+    }
+  };
+
+  searched();
+
+  $("#searchList").on("click", ".list-group-item", function(event) {
+    event.preventDefault();
+    var input = ($(this).text());
+    weatherResults(input);
+  });
 
   searchBtn.on("click", function (event) {
     event.preventDefault();
