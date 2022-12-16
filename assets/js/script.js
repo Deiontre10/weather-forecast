@@ -22,10 +22,10 @@ $(function () {
         var lat = data.coord.lat;
         var lon = data.coord.lon;
         var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
-        var weatherIcon = "http://openweathermap.org/img/w/"  + data.weather[0].icon + ".png";
-        
-        
-        $("#currentCity").text(data.name).append(" " + currentDate + " " + "<img src='" + weatherIcon  + "'>");
+        var weatherIcon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+
+
+        $("#currentCity").text(data.name).append(" " + currentDate + " " + "<img src='" + weatherIcon + "'>");
         $("#currentTemp").text("Temp:" + " " + data.main.temp + " °F");
         $("#currentWind").text("Wind: " + " " + data.wind.speed + " MPH");
         $("#currentHumidity").text("Humidity: " + " " + data.main.humidity + " %");
@@ -37,16 +37,15 @@ $(function () {
           .then(function (weather) {
             console.log(weather.list);
             for (var i = 0; i < weather.list.length; i += 8) {
-              var fiveDayIconEl = "http://openweathermap.org/img/w/"  + weather.list[i].weather[0].icon + ".png"
+              var fiveDayIconEl = "http://openweathermap.org/img/w/" + weather.list[i].weather[0].icon + ".png"
               var listPosition = (i + 8) / 8;
-              
-              $("#fiveDayIcon" + listPosition).text(weather.list[i].name).append(" " + weather.list[i].dt_txt.slice(0,10) + " " + "<img src='" + fiveDayIconEl  + "'>");
+
+              $("#fiveDayIcon" + listPosition).text(weather.list[i].name).append(" " + weather.list[i].dt_txt.slice(0, 10) + " " + "<img src='" + fiveDayIconEl + "'>");
               $("#fiveDayTemp" + listPosition).text("Temp:" + " " + weather.list[i].main.temp + " °F");
               $("#fiveDayWind" + listPosition).text("Wind: " + " " + weather.list[i].wind.speed + " MPH");
               $("#fiveDayHumidity" + listPosition).text("Humidity: " + " " + weather.list[i].main.humidity + " %");
-              
+              $(".fiveDay").attr("style", "background-color:blueviolet; color:white");
             }
-
           })
           .catch(function (error) {
             console.log(error);
@@ -55,9 +54,6 @@ $(function () {
       .catch(function (error) {
         console.log(error);
       });
-
-
-
   };
 
 
@@ -69,7 +65,12 @@ $(function () {
     } else {
       weatherResults(input);
     }
-    // $("#todaysDate").text(currentDate);
+
+    var searchedCities = [];
+
+    searchedCities = JSON.parse(localStorage.getItem("searchedCities")) || [];
+    searchedCities.push(input);
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
 
   });
 });
