@@ -2,8 +2,6 @@ var searchBtn = $("#searchButton");
 var cityInput = $("#textInput");
 var currentDate = dayjs().format("YYYY-MM-DD");
 
-
-
 $(function () {
 
   var weatherResults = function () {
@@ -22,7 +20,6 @@ $(function () {
         var lon = data.coord.lon;
         var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
         var weatherIcon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-
 
         $("#currentCity").text(data.name).append(" " + currentDate + " " + "<img src='" + weatherIcon + "'>");
         $("#currentTemp").text("Temp:" + " " + data.main.temp + " °F");
@@ -56,11 +53,12 @@ $(function () {
   };
 
   var searched = function () {
-    $("#searchList")
+    $("#searchList").empty();
     var previousCities = JSON.parse(localStorage.getItem("searchedCities")) || [];
     for (var i = 0; i < previousCities.length; i++) { 
-      $("#searchList").append ("<button class='list-group-item'>" + previousCities[i] 
-      + "</button>")
+      
+      $("#searchList").append ("<button class='list-group-item'>" + previousCities[i] + "</button>")
+
     }
   };
 
