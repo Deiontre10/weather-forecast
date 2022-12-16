@@ -42,6 +42,9 @@ $(function () {
           })
           .then(function (weather) {
             console.log(weather.list);
+            for (var i = 0; i < weather.list.length; i += 8) {
+              console.log(i);
+            }
             // $("#currentTemp").text("Temp:" + " " + weather.list[0].main.temp + " °F");
             // $("#currentWind").text("Wind: " + " " + weather.list[0].wind.speed + " MPH");
             // $("#currentHumidity").text("Humidity: " + " " + weather.list[0].main.humidity + " %");
