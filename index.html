@@ -31,44 +31,58 @@
           <button type="submit" class="btn btn-purp text-light col-12" id="searchButton">Search</button>
         </form>
         <div>
-          <ul id="searchList" class="list-group"></ul>
+          <ul id="searchList" class="list-group p-2"></ul>
         </div>
       </div>
+
       <div class="card col-8 col-md-9">
         <div class="card-body" id="todayForecast">
           <h2 class="card-title" id="currentCity">
             <span id="todaysDate"></span>
             <span id="weatherIcon"></span>
           </h2>
-          <p class="card-text" id="currentTemp">Temp:</p>
-          <p class="card-text" id="currentWind">Wind:</p>
-          <p class="card-text"  id="currentHumidity">Humidity:</p>
+          <p class="card-text" id="currentTemp"></p>
+          <p class="card-text" id="currentWind"></p>
+          <p class="card-text" id="currentHumidity"></p>
         </div>
+
         <div class="card row">
+          <h3>5-Day Forecast:</h3>
           <div class="col-8 col-md-9">
-            <h3>5-Day Forecast:</h3>
-            <div class="" id="fiveDay">
+            <div class="row" id="fiveDay">
               <div class="card-deck">
-                <div class="" id="one">
-                  <p>Blah</p>
+                <div class="card" id="dayOne">
+                  <p class="card-text" id="dayOneTemp"></p>
+                  <p class="card-text" id="dayOneWind"></p>
+                  <p class="card-text" id="dayOneHumidity"></p>
                 </div>
-                <div class="" id="two">
-                  <p>Blah</p>
+                <div class="card" id="dayTwo">
+                  <p class="card-text" id="dayTwoTemp"></p>
+                  <p class="card-text" id="dayTwoWind"></p>
+                  <p class="card-text" id="dayTwoHumidity"></p>
                 </div>
-                <div class="" id="three">
-                  <p>Blah</p>
+                <div class="card" id="dayThree">
+                  <p class="card-text" id="dayThreeTemp"></p>
+                  <p class="card-text" id="dayThreeWind"></p>
+                  <p class="card-text" id="dayThreeHumidity"></p>
                 </div>
-                <div class="" id="four">
-                  <p>Blah</p>
+                <div class="card" id="dayFour">
+                  <p class="card-text" id="dayFourTemp"></p>
+                  <p class="card-text" id="dayFourWind"></p>
+                  <p class="card-text" id="dayFourHumidity"></p>
                 </div>
-                <div class="" id="five">
-                  <p>Blah</p>
+                <div class="card" id="dayFive">
+                  <p class="card-text" id="dayFiveTemp"></p>
+                  <p class="card-text" id="dayFiveWind"></p>
+                  <p class="card-text" id="dayFiveHumidity"></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
+      
       
     </div>
 
