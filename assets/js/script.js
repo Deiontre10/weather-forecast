@@ -9,7 +9,7 @@ $(function () {
     var city = cityInput.val().trim();
     var apiKey = "06d1869c73d270a477b863d31ffacc7e"
     var currentUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
-
+    
 
     fetch(currentUrl)
       .then(function (response) {
@@ -34,7 +34,7 @@ $(function () {
             for (var i = 0; i < weather.list.length; i += 8) {
               var fiveDayIconEl = "http://openweathermap.org/img/w/" + weather.list[i].weather[0].icon + ".png"
               var listPosition = (i + 8) / 8;
-
+              $("#fiveDayIcon" + listPosition).text("");
               $("#fiveDayIcon" + listPosition).text(weather.list[i].name).append(" " + weather.list[i].dt_txt.slice(0, 10) + " " + "<img src='" + fiveDayIconEl + "'>");
               $("#fiveDayTemp" + listPosition).text("Temp:" + " " + weather.list[i].main.temp + " °F");
               $("#fiveDayWind" + listPosition).text("Wind: " + " " + weather.list[i].wind.speed + " MPH");
@@ -54,6 +54,7 @@ $(function () {
 
   var searched = function () {
     $("#searchList").empty();
+
     var previousCities = JSON.parse(localStorage.getItem("searchedCities")) || [];
     for (var i = 0; i < previousCities.length; i++) { 
       
@@ -65,6 +66,8 @@ $(function () {
   searched();
 
   $("#searchList").on("click", ".list-group-item", function(event) {
+    // $("#dayOne").empty();
+
     event.preventDefault();
     var input = ($(this).text());
     weatherResults(input);
